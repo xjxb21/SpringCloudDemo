@@ -4,19 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.xiao</groupId>
-	<artifactId>consumer-create-order</artifactId>
+	<artifactId>discovery-eureka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>consumer-create-order</name>
-	<description>创建订单服务</description>
-
-	<!--<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
-		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
-	</parent>-->
+	<name>discovery-eureka</name>
+	<description>discovery service</description>
 
 	<parent>
 		<groupId>com.xiao</groupId>
@@ -31,22 +24,10 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
-
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 
 </project>

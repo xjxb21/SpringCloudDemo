@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="consumer-create-order" />
+        <module name="discovery-eureka" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="comsumer-create-order" target="1.8" />
       <module name="consumer-create-order" target="1.8" />
+      <module name="discovery-eureka" target="1.8" />
       <module name="spring-cloud-demo" target="1.6" />
     </bytecodeTargetLevel>
   </component>
