@@ -2,7 +2,6 @@ package com.xiao.common.sequence;
 
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by xiao on 2017/3/23.
@@ -13,12 +12,12 @@ public final class ZookeeperSeqGenerator extends SeqGeneratorAdapter<String> {
     //单例创建
     private ZookeeperSeqGenerator(){}
 
-    private static class LazyHodler{
+    private static class LazyHolder{
         private final static ZookeeperSeqGenerator INSTANCE = new ZookeeperSeqGenerator();
     }
 
     public static ZookeeperSeqGenerator getInstance(){
-        return LazyHodler.INSTANCE;
+        return LazyHolder.INSTANCE;
     }
 
     @Override

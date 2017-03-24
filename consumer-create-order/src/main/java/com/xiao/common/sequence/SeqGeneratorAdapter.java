@@ -8,9 +8,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public abstract class SeqGeneratorAdapter<T> implements SeqGenerator, Callable<T> {
 
-    //用于存放序列结果 thread not safe
-    private FutureTask<T> getSeqTask;
-
     private ThreadPoolExecutor generatorPool;
     AtomicInteger rejectCount = new AtomicInteger(0);
 
@@ -40,7 +37,7 @@ public abstract class SeqGeneratorAdapter<T> implements SeqGenerator, Callable<T
     /**
      * 检查返回值的类型
      */
-    public T validateType(Object o) throws Exception {
+    private T validateType(Object o) throws Exception {
         if (o == null) {
             throw new Exception("sequence is null");
         }
