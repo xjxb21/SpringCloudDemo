@@ -1,6 +1,6 @@
 package com.xiao.service;
 
-import com.xiao.common.sequence.ZookeeperSeqGenerator;
+import com.xiao.common.sequence.ZookeeperAbstractSeqGenerator;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,7 +15,7 @@ public class OrderService {
      * @return
      */
     public String getOrderId() {
-        ZookeeperSeqGenerator generator = ZookeeperSeqGenerator.getInstance();
+        ZookeeperAbstractSeqGenerator generator = ZookeeperAbstractSeqGenerator.getInstance();
         Long waiteTime = 50L;
         return generator.getSeqId(waiteTime);
     }

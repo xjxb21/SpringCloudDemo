@@ -10,4 +10,17 @@ public interface SeqGenerator {
      * @return
      */
     Object generateSeq();
+
+    /**
+     * 获取序号
+     * @return
+     */
+    Object getSeqId();
+
+    /**
+     * 获取序号
+     * @param timeout 等待超时时间
+     * @return
+     */
+    Object getSeqId(Long timeout);
 }

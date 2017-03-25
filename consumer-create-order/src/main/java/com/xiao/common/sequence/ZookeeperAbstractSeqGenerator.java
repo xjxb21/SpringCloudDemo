@@ -7,16 +7,16 @@ import java.util.concurrent.ThreadLocalRandom;
  * Created by xiao on 2017/3/23.
  */
 
-public final class ZookeeperSeqGenerator extends SeqGeneratorAdapter<String> {
+public final class ZookeeperAbstractSeqGenerator extends AbstractSeqGenerator<String> {
 
     //单例创建
-    private ZookeeperSeqGenerator(){}
+    private ZookeeperAbstractSeqGenerator(){}
 
     private static class LazyHolder{
-        private final static ZookeeperSeqGenerator INSTANCE = new ZookeeperSeqGenerator();
+        private final static ZookeeperAbstractSeqGenerator INSTANCE = new ZookeeperAbstractSeqGenerator();
     }
 
-    public static ZookeeperSeqGenerator getInstance(){
+    public static ZookeeperAbstractSeqGenerator getInstance(){
         return LazyHolder.INSTANCE;
     }
 

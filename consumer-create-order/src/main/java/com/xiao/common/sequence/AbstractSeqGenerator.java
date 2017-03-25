@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 序列号生成器
  */
-public abstract class SeqGeneratorAdapter<T> implements SeqGenerator, Callable<T> {
+public abstract class AbstractSeqGenerator<T> implements SeqGenerator, Callable<T> {
 
     private ThreadPoolExecutor generatorPool;
     AtomicInteger rejectCount = new AtomicInteger(0);
@@ -67,18 +67,31 @@ public abstract class SeqGeneratorAdapter<T> implements SeqGenerator, Callable<T
         return generateSeq0();
     }
 
+    @Override
+    public Object getSeqId() {
+        return getSeqId(0L);
+    }
+
     /**
      * 调用方法：
-     * ZookeeperSeqGenerator.getSeqId();
+     * ZookeeperAbstractSeqGenerator.getSeqId();
      *
      * @param timeout 等待超时时间，如果超时则返回 null 值。
      * @return 新的序列号
      */
+    @Override
     public final T getSeqId(Long timeout) {
         try {
             FutureTask<T> futureTask = new FutureTask<>(this);
             getGeneratorPool().submit(futureTask);
-            T seqId = futureTask.get(timeout,TimeUnit.MILLISECONDS);
+
+            T seqId;
+            if (timeout > 0) {
+                seqId = futureTask.get(timeout, TimeUnit.MILLISECONDS);
+            } else {
+                seqId = futureTask.get();
+            }
+
             System.out.println("success generate: " + ">>>>" + seqId);
             return seqId;
         } catch (InterruptedException e) {
@@ -88,7 +101,7 @@ public abstract class SeqGeneratorAdapter<T> implements SeqGenerator, Callable<T
             e.printStackTrace();
             return null;
         } catch (TimeoutException e) {
-            System.out.println(Thread.currentThread().getName()+" Time out ,return null.");
+            System.out.println(Thread.currentThread().getName() + " Time out ,return null.");
             return null;
         }
     }
