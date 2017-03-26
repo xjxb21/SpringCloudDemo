@@ -1,6 +1,6 @@
 package com.xiao.service;
 
-import com.xiao.common.sequence.ZookeeperAbstractSeqGenerator;
+import com.xiao.common.sequence.ZookeeperSeqGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,11 +15,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class OrderServiceTest {
 
-    ZookeeperAbstractSeqGenerator generator;
+    ZookeeperSeqGenerator generator;
 
     @Before
     public void initialize() {
-        this.generator = ZookeeperAbstractSeqGenerator.getInstance();
+        this.generator = ZookeeperSeqGenerator.getInstance();
     }
 
     @Test
@@ -28,7 +28,7 @@ public class OrderServiceTest {
 
         //调用 非并发
         for (int i = 0; i < 30; i++) {
-            ZookeeperAbstractSeqGenerator generator = ZookeeperAbstractSeqGenerator.getInstance();
+            ZookeeperSeqGenerator generator = ZookeeperSeqGenerator.getInstance();
             String seqId = generator.getSeqId(50L);
             System.out.println("------- " + seqId);
         }

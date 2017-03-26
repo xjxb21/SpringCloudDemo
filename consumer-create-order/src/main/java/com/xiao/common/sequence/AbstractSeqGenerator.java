@@ -1,5 +1,8 @@
 package com.xiao.common.sequence;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -7,6 +10,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 序列号生成器
  */
 public abstract class AbstractSeqGenerator<T> implements SeqGenerator, Callable<T> {
+
+    public final Logger logger = LoggerFactory.getLogger(AbstractSeqGenerator.class);
 
     private ThreadPoolExecutor generatorPool;
     AtomicInteger rejectCount = new AtomicInteger(0);
@@ -74,7 +79,7 @@ public abstract class AbstractSeqGenerator<T> implements SeqGenerator, Callable<
 
     /**
      * 调用方法：
-     * ZookeeperAbstractSeqGenerator.getSeqId();
+     * ZookeeperSeqGenerator.getSeqId();
      *
      * @param timeout 等待超时时间，如果超时则返回 null 值。
      * @return 新的序列号
@@ -92,7 +97,8 @@ public abstract class AbstractSeqGenerator<T> implements SeqGenerator, Callable<
                 seqId = futureTask.get();
             }
 
-            System.out.println("success generate: " + ">>>>" + seqId);
+            logger.debug("getSeqId success>>>>> {}",seqId);
+
             return seqId;
         } catch (InterruptedException e) {
             e.printStackTrace();

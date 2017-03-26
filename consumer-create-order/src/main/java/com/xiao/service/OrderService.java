@@ -1,6 +1,8 @@
 package com.xiao.service;
 
-import com.xiao.common.sequence.ZookeeperAbstractSeqGenerator;
+import com.xiao.common.sequence.ZookeeperSeqGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,13 +12,15 @@ import org.springframework.stereotype.Service;
 @Service("orderService")
 public class OrderService {
 
+    public final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     /**
      * 获取订单ID号
      * @return
      */
     public String getOrderId() {
-        ZookeeperAbstractSeqGenerator generator = ZookeeperAbstractSeqGenerator.getInstance();
-        Long waiteTime = 50L;
+        ZookeeperSeqGenerator generator = ZookeeperSeqGenerator.getInstance();
+        Long waiteTime = 500L;
         return generator.getSeqId(waiteTime);
     }
 }
