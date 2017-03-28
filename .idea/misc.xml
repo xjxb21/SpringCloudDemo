@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/consumer-create-order/pom.xml" />
         <option value="$PROJECT_DIR$/discovery-eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/service-order/pom.xml" />
       </list>
     </option>
   </component>
@@ -17,6 +18,5 @@
     <option name="port" value="2181" />
     <option name="charset" value="UTF-8" />
     <option name="whitePaths" value="" />
-    <option name="enabled" value="true" />
   </component>
 </project>

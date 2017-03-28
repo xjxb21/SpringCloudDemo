@@ -1,0 +1,40 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: service-order
+logging:
+  level:
+    root: INFO
+    com.xiao: DEBUG
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+
+#数据源
+druid:
+    type: com.alibaba.druid.pool.DruidDataSource
+    orderDBMaster:
+        url: jdbc:mysql://localhost:3306/demodb?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: 123456
+        initial-size: 5
+        min-idle: 1
+        max-active: 5
+        test-on-borrow: true
+    orderDBSlave:
+        url: jdbc:mysql://localhost:3306/employees?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: 123456
+        initial-size: 5
+        min-idle: 1
+        max-active: 5
+        test-on-borrow: true
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml

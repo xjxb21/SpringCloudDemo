@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 @Service("orderService")
 public class OrderService {
 
-    public final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     /**
      * 获取订单ID号
      * @return

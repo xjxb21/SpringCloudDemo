@@ -11,13 +11,6 @@
 	<name>consumer-create-order</name>
 	<description>创建订单服务</description>
 
-	<!--<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
-		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
-	</parent>-->
-
 	<parent>
 		<groupId>com.xiao</groupId>
 		<artifactId>spring-cloud-demo</artifactId>
@@ -41,6 +34,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 
+		<!--zookeeper客户端 apache curator 支持-->
 		<dependency>
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-framework</artifactId>
@@ -50,7 +44,22 @@
 			<artifactId>curator-recipes</artifactId>
 		</dependency>
 
-	</dependencies>
+		<!--Include Ribbon ，其实在eureka中已经包含的Ribbon，可以不需要引入-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-ribbon</artifactId>
+		</dependency>
+		<!--feign支持-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency>
+		<!--引入断路器-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hystrix</artifactId>
+		</dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

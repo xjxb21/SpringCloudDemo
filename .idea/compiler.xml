@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="consumer-create-order" />
         <module name="discovery-eureka" />
+        <module name="service-order" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="comsumer-create-order" target="1.8" />
       <module name="consumer-create-order" target="1.8" />
       <module name="discovery-eureka" target="1.8" />
+      <module name="service-order" target="1.8" />
       <module name="spring-cloud-demo" target="1.6" />
     </bytecodeTargetLevel>
   </component>
