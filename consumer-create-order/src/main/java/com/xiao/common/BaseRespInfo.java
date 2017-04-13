@@ -15,6 +15,8 @@ public class BaseRespInfo {
         this.object = object;
     }
 
+    public BaseRespInfo(){}
+
     public boolean isStatus() {
         return status;
     }
