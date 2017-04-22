@@ -1,20 +1,20 @@
 server:
-  port: 8020
+  port: 8080
 spring:
+  thymeleaf:
+    cache: false
+    mode: HTML5
   application:
-    name: service-order
+    name: ui-web
 logging:
   level:
     root: INFO
     com.xiao: DEBUG
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${server.port}
-
+app:
+  session:
+    redisServer: 192.168.8.101
+    redisPort: 6379
+    connectTimeOut: 2000
 #数据源
 druid:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -37,4 +37,5 @@ druid:
         max-active: 5
         test-on-borrow: true
 mybatis:
-  mapper-locations: classpath:mybatis/mapper/*.xml
+  mapper-locations: classpath:/mybatis/**/**/*Mapper.xml
+  type-aliases-package: com.ekong.entity
