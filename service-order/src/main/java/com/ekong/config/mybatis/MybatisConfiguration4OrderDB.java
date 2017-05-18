@@ -8,6 +8,7 @@ import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -43,12 +44,18 @@ public class MybatisConfiguration4OrderDB extends MybatisAutoConfiguration {
 //        return super.sqlSessionFactory(roundRobinDataSourceProxy());
 //    }
 
+    @Autowired
+    MybatisProperties mybatisProperties;
+
+    @Value("${app.mybatis.mapperPath}")
+    String mybatisMapperPath;
     /**
      * 放弃重写方法，修改为Qualifier指定bean的方式
      */
     @Bean
     @Autowired
     public SqlSessionFactory sqlSessionFactory(@Qualifier(value = "roundRobinDataSourceProxy") DataSource dataSource) throws Exception {
+        mybatisProperties.setMapperLocations(new String[]{mybatisMapperPath});
         SqlSessionFactory sqlSessionFactory = super.sqlSessionFactory(dataSource);
         return sqlSessionFactory;
     }

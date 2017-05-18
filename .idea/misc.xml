@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/consumer-create-order/pom.xml" />
         <option value="$PROJECT_DIR$/discovery-eureka/pom.xml" />
         <option value="$PROJECT_DIR$/service-order/pom.xml" />
+        <option value="$PROJECT_DIR$/ui-web-user-manage/pom.xml" />
       </list>
     </option>
   </component>

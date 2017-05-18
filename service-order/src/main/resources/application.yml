@@ -36,5 +36,6 @@ druid:
         min-idle: 1
         max-active: 5
         test-on-borrow: true
-mybatis:
-  mapper-locations: classpath:mybatis/mapper/*.xml
+app:
+  mybatis:
+    mapperPath: classpath:mybatis/mapper/*.xml

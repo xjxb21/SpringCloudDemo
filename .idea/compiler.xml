@@ -9,6 +9,8 @@
         <module name="consumer-create-order" />
         <module name="discovery-eureka" />
         <module name="service-order" />
+        <module name="ui-web" />
+        <module name="ui-web-user-manage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -17,6 +19,8 @@
       <module name="discovery-eureka" target="1.8" />
       <module name="service-order" target="1.8" />
       <module name="spring-cloud-demo" target="1.6" />
+      <module name="ui-web" target="1.8" />
+      <module name="ui-web-user-manage" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
